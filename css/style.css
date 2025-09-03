@@ -1,0 +1,30 @@
+/* body{
+    background-color: aqua;
+}
+p{
+    text-decoration-color: blue;
+}
+h2{
+    color: red; */
+    div+p{
+        color: green;
+        background-color: brown;
+
+    }
+    p::after{
+        content: "WE are students of 3rd year CS B";
+        background-color: coral;
+        color : yellow;
+    }
+    p::selection{
+        background-color: chartreuse;
+        color: blue;
+    }
+    p:nth-child(2){
+        background-color: cyan;
+        color: black;
+    }
+    div p:nth-of-type(1){
+        background-color: darkblue;
+        color: white;
+    }
