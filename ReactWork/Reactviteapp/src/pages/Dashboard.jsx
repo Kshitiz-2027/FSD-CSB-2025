@@ -1,19 +1,33 @@
-import React, {useEffect, useState}from 'react'
+import React, {use, useEffect, useState}from 'react'
 
 function dashboard() {
-  const[counter,setCounter]=useState(10);
-  const[pointer,setPointer]=useState(100);
-  useEffect(()=>{
-    console.log(counter)
-    console.log(pointer)
-},[counter,pointer])
+    const [data,setData]=useState([]);
+     useEffect(() => {
+      async function fetchData() {
+         const serverresponse = await fetch('https://fakestoreapi.com/products');
+         const jsonresponse = await serverresponse.json();
+         console.log(jsonresponse);
+         setData(jsonresponse);
+      }
+      fetchData();
+     }, [])
   return (
     <div>
-     <h2>Counter Value = {counter}</h2>
-      <h2>Pointer Value = {pointer}</h2>
-      <button onClick={()=>setCounter(counter+10)}>Counter</button>
-      <button onClick={()=>setPointer(pointer-10)}>Pointer</button>
-    </div>
+  {
+    data.length === 0 ? (
+      <h2>Data could not fetch</h2>
+    ) : (
+      data.map((item, index) => (
+        <div style={{border: '2px solid Blue', margin: '10px', padding: '10px', height: '200px', width: '500px',display: 'flex', alignItems: 'center'}} key={index}>
+          <img src={item.image} alt={item.title} style={{width: '50px', height: '50px'}} />
+          <h3>{item.title}</h3>
+          <button>Add to Cart</button>
+        </div>
+      ))
+    )
+  }
+</div>
+
   )
 }
 
