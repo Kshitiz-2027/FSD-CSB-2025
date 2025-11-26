@@ -29,7 +29,7 @@ function Login(logData) {
     <div>
       <h2>Login Form </h2>
         <form>
-            <label htmlFor="email">Email:</label>
+            <label for="email">Email:</label>
             <input onChange={(e) => setEmail(e.target.value)} type="email" id="email" />
             <br />
             <label for="password">Password:</label>
